@@ -1,11 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function App() {
+export default function ContadorDeLikes() {
+  const[likes,setlikes] = useState(0);
+  const[deslikes,setdeslikes] = useState(0);  
+
+  function incrementar(){
+    setlikes(likes + 1);
+    setdeslikes(deslikes + 1);  
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>Total de Likes:{likes}</Text>
+      <TouchableOpacity onPress={() => setlikes(likes+1)}>
+        <Text>Deixe seu Like</Text>
+      </TouchableOpacity> 
+  
+      <Text>Total de deslikes:{deslikes}</Text>
+      <TouchableOpacity onPress={() => setdeslikes(deslikes+1)}>
+        <Text>Deixe seu Deslike</Text>
+      </TouchableOpacity>     
     </View>
   );
 }
@@ -13,7 +28,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffb6c1',
     alignItems: 'center',
     justifyContent: 'center',
   },
